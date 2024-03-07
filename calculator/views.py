@@ -28,7 +28,10 @@ def calculate(request):
                 return JsonResponse({'error': 'Ділення на нуль неможливе'})
             result = num1 / num2
         elif operation == 'convert':
-            result = (num1 * 9 / 5) + 32
+            if -273 <= num1 <= 273:
+                result = (num1 * 9 / 5) + 32
+            else:
+                return JsonResponse({'error': 'out of range'})
         else:
             return JsonResponse({'error': 'Невідома операція'})
 
