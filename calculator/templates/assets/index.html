@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькулятор</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
@@ -25,6 +26,11 @@
             <option value="convert">Перетворення (Celsius to Fahrenheit)</option>
         </select>
     </div>
+    {% if result %}
+        <div class="result">
+            Результат: {{ result }}
+        </div>
+    {% endif %}
     <button type="submit" class="btn btn-primary">Обчислити</button>
 </form>
 
