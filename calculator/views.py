@@ -32,6 +32,6 @@ def calculate(request):
         else:
             return JsonResponse({'error': 'Невідома операція'})
 
-        return JsonResponse({'result': result})
+        return render(request, 'assets/index.html', {'result': result})
     else:
         return render(request, 'assets/index.html')
