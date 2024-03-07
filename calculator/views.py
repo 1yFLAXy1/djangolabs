@@ -34,4 +34,4 @@ def calculate(request):
 
         return JsonResponse({'result': result})
     else:
-        return render(request, 'assets/calculator.html')
+        return render(request, 'assets/index.html')
