@@ -9,31 +9,31 @@ def calculate(request):
         operation = request.POST.get('operation')
 
         if num1_str is None or num2_str is None or operation is None:
-            return JsonResponse({'error': 'Не всі необхідні дані надано'})
+            return JsonResponse({'error': 'Not all required data is provided'})
 
         try:
             num1 = float(num1_str)
             num2 = float(num2_str)
         except ValueError:
-            return JsonResponse({'error': 'Некоректні дані для обчислення'})
+            return JsonResponse({'error': 'Incorrect data for calculation'})
 
         if operation == 'add':
-            result = num1 + num2
+            result = '{:.3f}'.format(num1 + num2)
         elif operation == 'subtract':
-            result = num1 - num2
+            result = '{:.3f}'.format(num1 - num2)
         elif operation == 'multiply':
-            result = num1 * num2
+            result = '{:.3f}'.format(num1 * num2)
         elif operation == 'divide':
             if num2 == 0:
-                return JsonResponse({'error': 'Ділення на нуль неможливе'})
-            result = num1 / num2
+                return JsonResponse({'error': 'Division by zero is impossible'})
+            result = '{:.3f}'.format(num1 / num2)
         elif operation == 'convert':
             if -273 <= num1 <= 273:
-                result = (num1 * 9 / 5) + 32
+                result = '{:.3f}'.format((num1 * 9 / 5) + 32)
             else:
                 return JsonResponse({'error': 'out of range'})
         else:
-            return JsonResponse({'error': 'Невідома операція'})
+            return JsonResponse({'error': 'Unknown operation'})
 
         return render(request, 'assets/index.html', {'result': result})
     else:
